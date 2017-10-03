@@ -3,6 +3,13 @@
 #include "array_merge.h"
 
 int* array_merge(int num_arrays, int* sizes, int** values){
+
+	if(num_arrays == 0){
+		int* empty_result = (int*) calloc(2, sizeof(int));
+		empty_result[0] = 0;
+		return empty_result;
+	}
+
 	int counter = 0;
 	for (int i = 0; i < num_arrays; i++){
 		counter = counter + sizes[i];
