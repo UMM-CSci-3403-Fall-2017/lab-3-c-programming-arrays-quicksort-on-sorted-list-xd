@@ -2,7 +2,7 @@
 
 #include "mergesort.h"
 
-void mergesort(int size, int values[]) {
+void mergesort(int size, int* values) {
 	if (size <= 1) {
 		return;
 	}
