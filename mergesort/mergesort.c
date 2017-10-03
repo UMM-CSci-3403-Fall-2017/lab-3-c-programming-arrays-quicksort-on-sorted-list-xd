@@ -3,14 +3,17 @@
 #include "mergesort.h"
 
 void mergesort(int size, int* values) {
+	//if the array is of size 0 or 1, it is already sorted
 	if (size <= 1) {
 		return;
 	}
 
+	//creates two temporary arrays that will be used to split apart the given array
 	int mid = size / 2;
 	int* part_one = (int*) calloc((size/2) + 1, sizeof(int));
 	int* part_two = (int*) calloc((size/2) + 1, sizeof(int));
 
+	//populates the two temporary arrays
 	int i = 0;
 	while (i < mid) {
 		part_one[i] = values[i];
@@ -24,9 +27,11 @@ void mergesort(int size, int* values) {
 		k++;
 	}
 
+	//recursive call to sort both temporary arrays
 	mergesort(i, part_one);
 	mergesort(k, part_two);
 
+	//populates the original array with the original elements sorted
 	int offset_one = 0;
 	int offset_two = 0;
 	int a;
@@ -44,6 +49,7 @@ void mergesort(int size, int* values) {
 		}
 	}
 
+	//populates the original array with left-over elements (in case of an odd number)
 	while (offset_one < i) {
 		values[offset_one + offset_two] = part_one[offset_one];
 		offset_one++;
